@@ -1,0 +1,17 @@
+version: '3.8'
+
+networks:
+  tcp-server-file:
+
+services:
+  tcp-server-file:
+    container_name: tcp-server-file
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - 11112:11112
+    volumes:
+      - ~/test:/opt/app-code/test
+    networks:
+      - tcp-server-file
