@@ -14,7 +14,7 @@ const BUFFER_SIZE = 1024
 
 func main() {
 	// Listen for incoming connections.
-	addr := "localhost:11112"
+	addr := "0.0.0.0:11112"
 	l, err := net.Listen("tcp", addr)
 	if err != nil {
 		panic(err)
@@ -69,7 +69,7 @@ func getFileFromClient(fileName string, connection net.Conn) {
 	fileBuffer := make([]byte, BUFFER_SIZE)
 
 	var err error
-	file, err := os.Create(strings.TrimSpace("./test/" + fileName))
+	file, err := os.Create("./test/" + fileName)
 	if err != nil {
 		log.Fatal(err)
 	}
