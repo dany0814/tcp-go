@@ -69,11 +69,12 @@ func getFileFromClient(fileName string, connection net.Conn) {
 	fileBuffer := make([]byte, BUFFER_SIZE)
 
 	var err error
-	file, err := os.Create(strings.TrimSpace(fileName))
+	file, err := os.Create(strings.TrimSpace("./test/" + fileName))
 	if err != nil {
 		log.Fatal(err)
 	}
 	connection.Write([]byte("get " + fileName))
+
 	for err == nil || err != io.EOF {
 
 		connection.Read(fileBuffer)
@@ -85,6 +86,12 @@ func getFileFromClient(fileName string, connection net.Conn) {
 			break
 		}
 		currentByte += BUFFER_SIZE
+
+		// basepath := path.Dir(file.FileName)
+		// fileName := path.Base(file.FileName)
+		// err = os.MkdirAll(basepath, 0777)
+		// checkError(err)
+		// filePath := path.Join(basepath, fileName)
 
 	}
 
