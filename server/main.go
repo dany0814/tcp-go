@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-const BUFFER_SIZE = 1024
+const BUFFER_SIZE = 1024 * 10 * 10
 
 func main() {
 	// Listen for incoming connections.
